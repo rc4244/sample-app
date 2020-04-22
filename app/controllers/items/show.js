@@ -6,7 +6,8 @@ export default Controller.extend({
             let cart_item = {
                 item_id: param.id,
                 quantity: 1,
-                price: param.price
+                price: param.price,
+                title: param.title
             }
             let store = this.store;
 
@@ -21,8 +22,8 @@ export default Controller.extend({
                         cartItem.set('price', cartItem.price + cart_item.price);
                     } else {
                         let newRecord = store.createRecord('cart', cart_item);
-                    // Save the record to the API endpoint specified in adapters/application.js
-                    newRecord.save();
+                        // Save the record to the API endpoint specified in adapters/application.js
+                        newRecord.save();
                     }
                 } else {
                     //add item to shopping cart
@@ -33,6 +34,13 @@ export default Controller.extend({
                 }
 
             });
+        },
+        setAsFavourite(param) {
+            // param.favourite = !param.favourite;
+            this.store.findRecord('item', param.id)
+                .then(function (item) {
+                    item.set('favourite', !param.favourite);
+                });
         }
     }
 });

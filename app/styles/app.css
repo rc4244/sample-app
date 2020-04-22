@@ -3,3 +3,8 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.favourite-item {
+   background: #2c7a7b;
+   color: white;
+}

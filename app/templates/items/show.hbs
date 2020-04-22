@@ -1,6 +1,36 @@
-<strong>Item Detail</strong>
-<div class="flex mb-4 p-3">
-  <div class="w-3/4 h-12 font-semibold">{{model.title}} [{{model.quantity}}]</div>
-<div class="w-full"><p>{{model.description}}</p></div>
+<div>
+  {{#link-to "items" class="block mt-4 ml-4 text-teal-700 mr-4"}}
+  Back to Items
+  {{/link-to}}
 </div>
-<button {{action "addToCart" model}}>Add to Cart</button>
+
+<div class="max-w-sm w-full lg:max-w-full lg:flex p-3">
+  <div
+    class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+    style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+  </div>
+  <div class="bg-white border-b border-gray-400 border-l border-r border-t flex flex-col justify-between p-4 rounded-b">
+    <div class="mb-8">
+      <div class="item-title text-gray-900 font-bold text-xl mb-2">{{model.title}}</div>
+      <p class="item-description text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+    </div>
+    <div class="flex items-center">
+      <div class="text-sm">
+        <p class="text-gray-900 leading-none">{{model.quantity}}</p>
+        <p class="text-gray-600">INR {{model.price}}</p>
+      </div>
+    </div>
+    <div class="flex items-center pt-2">
+      <button {{action "addToCart" model}}
+        class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
+        Add +
+      </button>
+
+      <button {{action "setAsFavourite" model}}
+        class="ml-2 bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded {{if model.favourite 'favourite-item'}}">
+        Favourite
+      </button>
+    </div>
+  </div>
+</div>

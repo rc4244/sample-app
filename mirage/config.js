@@ -1,8 +1,16 @@
 export default function() {
   this.namespace = 'api';
 
-  this.get('/items', (schema) => {
-    return schema.items.all();
+  this.get('/items', (schema, request) => {
+    let items = schema.items.all();
+    if (request.queryParams.title) {
+      let filteredItems = items.filter((item) => {
+        return item.title.indexOf(request.queryParams.title) !== -1;
+      });
+      return filteredItems;
+    } else {
+      return items;
+    }
   });
 
   this.get('/items/:id', (schema, request) => {
