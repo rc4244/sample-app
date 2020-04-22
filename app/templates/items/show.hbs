@@ -1,6 +1,6 @@
 <strong>Item Detail</strong>
 <div class="flex mb-4 p-3">
-  <div class="w-3/4 h-12 font-semibold">{{model.item.title}} [{{model.item.quantity}}]</div>
-<div class="w-full"><p>{{model.item.description}}</p></div>
+  <div class="w-3/4 h-12 font-semibold">{{model.title}} [{{model.quantity}}]</div>
+<div class="w-full"><p>{{model.description}}</p></div>
 </div>
-<button {{action "addToCart" model.item}}>Add to Cart</button>
+<button {{action "addToCart" model}}>Add to Cart</button>
