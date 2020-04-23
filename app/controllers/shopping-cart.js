@@ -3,6 +3,7 @@ import Controller from '@ember/controller';
 export default Controller.extend({
     init() {
         this._super(...arguments);
+        this.set('cartTotal', updateCartTotal(this.get('model')));
     },
     activate() {
         this.set('cartTotal', updateCartTotal(this.get('model')));
@@ -21,8 +22,10 @@ export default Controller.extend({
 
 function updateCartTotal (model) {
     let total = 0;
-    model.forEach(item => {
-        total = total + (item.price || 0);
-    });
+    if (model) {
+        model.forEach(item => {
+            total = total + (item.price || 0);
+        });
+    }
     return total;
 }
