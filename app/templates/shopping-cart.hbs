@@ -5,22 +5,31 @@
         <th class="px-4 py-2">Item</th>
         <th class="px-4 py-2">Quantity</th>
         <th class="px-4 py-2">Price</th>
-        <th class="px-4 py-2">Action</th>
+        <th class="px-4 py-2"></th>
       </tr>
     </thead>
     <tbody>
+      {{#if model}}
       {{#each model as |cartItem|}}
-      <tr class="cart-item">
-        <td class="border px-4 py-2 font-semibold">{{cartItem.title}}</td>
-        <td class="border px-4 py-2">{{cartItem.quantity}}</td>
-        <td class="border px-4 py-2">{{cartItem.price}}</td>
-        <td class="border px-4 py-2">
-          {{!-- <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"> --}}
-            <svg class="fill-current text-red-500 inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm5-11H5v2h10V9z"/></svg>
-          {{!-- </button> --}}
-        </td>
-      </tr>
+        <tr class="cart-item">
+          <td class="border px-4 py-2 font-semibold">{{cartItem.title}}</td>
+          <td class="border px-4 py-2">{{cartItem.quantity}}</td>
+          <td class="border px-4 py-2">{{cartItem.price}}</td>
+          <td class="border px-4 py-2">
+            <button {{action "removeFromCart" cartItem}}>
+              <svg class="fill-current text-red-500 inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20">
+                <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm5-11H5v2h10V9z" /></svg>
+            </button>
+          </td>
+        </tr>
       {{/each}}
+      <tr><td class="border px-4 py-2 font-semibold text-center" colspan="4">Total: {{cartTotal}}</td></tr>
+      {{else}}
+        <tr>
+          <td class="border px-4 py-2 font-semibold text-center" colspan="4">No items were added to cart!</td>
+        </tr>
+      {{/if}}
     </tbody>
   </table>
 </div>
