@@ -24,12 +24,6 @@ module('Acceptance | shopping cart', function(hooks) {
     assert.equal(this.element.querySelectorAll('.cart-item').length, 5, 'should display 5 cart items');
   });
 
-  test('Should display cart total when items are present', async function(assert) {
-    this.server.createList('cart', 5);
-    await visit('/shopping-cart');
-    assert.ok(this.element.querySelector('.cart-total').textContent.includes("Total"), 'should display total correctly');
-  });
-
   test('should remove element from cart when delete icon is pressed ', async function(assert) {
     this.server.createList('cart', 5);
     await visit('/shopping-cart');
