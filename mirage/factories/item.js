@@ -1,7 +1,7 @@
 import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  title(i) {
+  title() {
     return `Item ${Math.random().toString(36).substring(7)}`;
   },
 

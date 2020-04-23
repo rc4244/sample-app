@@ -1,11 +1,13 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
+import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
 
-module('Unit | Controller | shopping-cart', function(hooks) {
+module('Unit | Controller | shopping-cart', function (hooks) {
   setupTest(hooks);
+  setupMirage(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
+  test('it exists', function (assert) {
     let controller = this.owner.lookup('controller:shopping-cart');
     assert.ok(controller);
   });

@@ -27,6 +27,8 @@ export default function() {
     return schema.carts.all();
   });
 
+  this.get('/carts/:id');   
+
   this.del('/carts/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
