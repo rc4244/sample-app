@@ -27,7 +27,7 @@ module('Unit | Route | index', function(hooks) {
     assert.equal(this.element.querySelectorAll('.item').length, 10, 'should display 10 items');
   });
 
-  test('should show details for a specific rental', async function(assert) {
+  test('should show details for a specific item', async function(assert) {
     this.server.createList('item', 10);
     await visit('/');
     await click(".item1");

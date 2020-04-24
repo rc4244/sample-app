@@ -9,13 +9,13 @@ module('Integration | Component | shopping-cart', function(hooks) {
 
   hooks.beforeEach(function () {
     let item1 = EmberObject.create({
-      title: 'test-title',
+      title: 'test-title-1',
       item_id: 1,
       price: 10,
       quantity: 1
     });
     let item2 = EmberObject.create({
-      title: 'test-title',
+      title: 'test-title-2',
       item_id: 2,
       price: 10,
       quantity: 1
@@ -32,6 +32,4 @@ module('Integration | Component | shopping-cart', function(hooks) {
     await render(hbs`{{shopping-cart items=items}}`);
     assert.ok(this.element.querySelector('.cart-total').textContent.includes("20"), 'should display total correctly');
   });
-
-  
 });
